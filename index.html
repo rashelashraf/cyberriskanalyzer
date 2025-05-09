@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Risk Investment Analysis</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Cybersecurity Risk Investment Analysis</h1>
+            <p>Quantitative Assessment and ROI Calculation for Security Controls</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">CyberRisk Analyzer</div>
+            <ul class="nav-links">
+                <li><a href="#overview" class="active" data-section="overview">Overview</a></li>
+                <li><a href="#asset-valuation" data-section="asset-valuation">Asset Valuation</a></li>
+                <li><a href="#risk-calculation" data-section="risk-calculation">Risk Calculation</a></li>
+                <li><a href="#roi-analysis" data-section="roi-analysis">ROI Analysis</a></li>
+                <li><a href="#reporting" data-section="reporting">Reporting</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <section id="overview" class="active-section">
+                <div class="card">
+                    <div class="card-header">
+                        Security Investment Analysis Overview
+                    </div>
+                    <div class="card-body">
+                        <h2>Introduction</h2>
+                        <p>This tool helps cybersecurity professionals and decision-makers quantify the financial impact of security investments. By calculating metrics such as Single Loss Expectancy (SLE), Annual Loss Expectancy (ALE), and Return on Security Investment (ROSI), you can make data-driven decisions about which security controls to implement.</p>
+                        
+                        <div class="alert alert-info">
+                            <strong>Getting Started:</strong> Fill out each section to build a comprehensive risk analysis. The tool will automatically calculate key metrics and provide visualizations to help you make informed decisions.
+                        </div>
+                        
+                        <h3>Project Information</h3>
+                        <div class="form-group">
+                            <label for="project-name">Project Name</label>
+                            <input type="text" id="project-name" placeholder="e.g., Enterprise Email Security Enhancement">
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="analyst-name">Analyst Name</label>
+                                    <input type="text" id="analyst-name" placeholder="Your name">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="analysis-date">Analysis Date</label>
+                                    <input type="text" id="analysis-date" placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="project-description">Project Description</label>
+                                    <textarea id="project-description" rows="3" placeholder="Describe the security investment being analyzed..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" data-goto="asset-valuation">Next: Asset Valuation</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="asset-valuation">
+                <div class="card">
+                    <div class="card-header">
+                        Asset Valuation & Threat Analysis
+                    </div>
+                    <div class="card-body">
+                        <h2>Step 1: Asset Identification and Valuation</h2>
+                        <p>Identify the assets at risk and determine their value to the organization. Consider both tangible (hardware, software) and intangible (data, reputation) assets.</p>
+                        
+                        <div class="risk-input-section">
+                            <h3>Asset Details</h3>
+                            <div class="grid">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="asset-name">Asset Name</label>
+                                        <input type="text" id="asset-name" placeholder="e.g., Employee Laptops">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="asset-category">Asset Category</label>
+                                        <select id="asset-category">
+                                            <option value="">-- Select Category --</option>
+                                            <option value="hardware">Hardware</option>
+                                            <option value="software">Software</option>
+                                            <option value="data">Data</option>
+                                            <option value="intellectual">Intellectual Property</option>
+                                            <option value="reputation">Reputation</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Asset Value Components</h3>
+                            <div class="grid">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="hardware-value">Hardware Value ($)</label>
+                                        <input type="number" id="hardware-value" placeholder="e.g., 1000" min="0">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="data-value">Data Value ($) <span class="tooltip">?<span class="tooltiptext">Consider the cost to recreate the data, potential regulatory fines, and impact on business operations.</span></span></label>
+                                        <input type="number" id="data-value" placeholder="e.g., 9000" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="calculation-box">
+                                <div class="calculation-title">Total Asset Value (AV)</div>
+                                <p>The sum of all value components for this asset:</p>
+                                <div class="formula">AV = Hardware Value + Data Value + Other Components</div>
+                                <div class="result-value" id="asset-value-result">$10,000</div>
+                            </div>
+                        </div>
+                        
+                        <h2>Step 2: Threat and Vulnerability Analysis</h2>
+                        <p>Identify potential threats to the asset and determine the exposure factor - the percentage of the asset's value that would be lost if a security incident occurs.</p>
+                        
+                        <div class="risk-input-section">
+                            <h3>Threat Details</h3>
+                            <div class="form-group">
+                                <label for="threat-description">Threat Description</label>
+                                <input type="text" id="threat-description" placeholder="e.g., Ransomware infection leading to data loss">
+                            </div>
+                            
+                            <h3>Exposure Factor (EF)</h3>
+                            <p>The percentage of the asset that would be lost or impacted if the threat materializes.</p>
+                            
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="90" class="range-slider" id="exposure-factor-slider">
+                                <div class="slider-value" id="exposure-factor-value">90%</div>
+                            </div>
+                            
+                            <div class="calculation-box">
+                                <div class="calculation-title">Single Loss Expectancy (SLE)</div>
+                                <p>The monetary loss expected from a single occurrence of the threat:</p>
+                                <div class="formula">SLE = Asset Value × Exposure Factor</div>
+                                <div class="result-value" id="sle-result">$9,000</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-6">
+                                <button class="btn btn-outline" data-goto="overview">Previous: Overview</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-primary" data-goto="risk-calculation">Next: Risk Calculation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="risk-calculation">
+                <div class="card">
+                    <div class="card-header">
+                        Risk Calculation
+                    </div>
+                    <div class="card-body">
+                        <h2>Step 3: Annual Loss Expectancy Calculation</h2>
+                        <p>Calculate the annual loss expectancy (ALE) based on the SLE and the annualized rate of occurrence (ARO).</p>
+                        
+                        <div class="risk-input-section">
+                            <h3>Annualized Rate of Occurrence (ARO)</h3>
+                            <p>The estimated frequency with which a specific threat is expected to occur in a year.</p>
+                            
+                            <div class="form-group">
+                                <label for="aro-value">ARO Value</label>
+                                <input type="number" id="aro-value" placeholder="e.g., 0.5 (once every two years)" step="0.1" min="0" max="365" value="0.5">
+                                <small>Enter values like 0.5 (once every two years), 1 (once a year), 12 (monthly), etc.</small>
+                            </div>
+                            
+                            <div class="calculation-box">
+                                <div class="calculation-title">Annual Loss Expectancy Before Safeguard</div>
+                                <p>The expected yearly loss due to the threat before implementing any controls:</p>
+                                <div class="formula">ALE_before = SLE × ARO</div>
+                                <div class="result-value" id="ale-before-result">$4,500</div>
+                            </div>
+                        </div>
+                        
+                        <h2>Step 4: Safeguard Analysis</h2>
+                        <p>Define the security control or safeguard you're considering and calculate the expected reduction in risk.</p>
+                        
+                        <div class="risk-input-section">
+                            <h3>Proposed Safeguard</h3>
+                            <div class="form-group">
+                                <label for="safeguard-description">Safeguard Description</label>
+                                <input type="text" id="safeguard-description" placeholder="e.g., Installing enterprise-level antivirus software">
+                            </div>
+                            
+                            <div class="grid">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="safeguard-cost">Annual Cost per Unit ($)</label>
+                                        <input type="number" id="safeguard-cost" placeholder="e.g., 200" min="0" value="200">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="units-count">Number of Units</label>
+                                        <input type="number" id="units-count" placeholder="e.g., 100" min="1" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Effectiveness of Safeguard</h3>
+                            <p>Estimate how the safeguard will reduce the annualized rate of occurrence (ARO).</p>
+                            
+                            <div class="form-group">
+                                <label for="aro-after">ARO After Implementing Safeguard</label>
+                                <input type="number" id="aro-after" placeholder="e.g., 0.1 (once every ten years)" step="0.1" min="0" max="365" value="0.1">
+                            </div>
+                            
+                            <div class="calculation-box">
+                                <div class="calculation-title">Annual Loss Expectancy After Safeguard</div>
+                                <p>The expected yearly loss after implementing the safeguard:</p>
+                                <div class="formula">ALE_after = SLE × ARO_after</div>
+                                <div class="result-value" id="ale-after-result">$900</div>
+                            </div>
+                            
+                            <div class="calculation-box">
+                                <div class="calculation-title">Total Annual Safeguard Cost</div>
+                                <p>The total annual cost to implement and maintain the safeguard:</p>
+                                <div class="formula">Annual Cost = Cost per Unit × Number of Units</div>
+                                <div class="result-value" id="total-cost-result">$200</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-6">
+                                <button class="btn btn-outline" data-goto="asset-valuation">Previous: Asset Valuation</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-primary" data-goto="roi-analysis">Next: ROI Analysis</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="roi-analysis">
+                <div class="card">
+                    <div class="card-header">
+                        Return on Investment Analysis
+                    </div>
+                    <div class="card-body">
+                        <h2>Step 5: Return on Security Investment (ROSI)</h2>
+                        <p>Calculate the value of the security investment and determine if it is financially justified.</p>
+                        
+                        <div class="calculation-box">
+                            <div class="calculation-title">Security Investment Value</div>
+                            <p>The net benefit of implementing the safeguard:</p>
+                            <div class="formula">Value of Safeguard = ALE_before - ALE_after - Annual Cost of Safeguard</div>
+                            <div class="result-value" id="safeguard-value-result">$3,400</div>
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-6">
+                                <div class="metric-card positive">
+                                    <div class="metric-title">Return on Security Investment (ROSI)</div>
+                                    <div class="metric-value" id="rosi-percentage">1,700%</div>
+                                    <div class="metric-description">[(ALE_before - ALE_after - Annual Cost) ÷ Annual Cost] × 100%</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="metric-card neutral">
+                                    <div class="metric-title">Risk Reduction Percentage</div>
+                                    <div class="metric-value" id="risk-reduction-percentage">80%</div>
+                                    <div class="metric-description">[(ALE_before - ALE_after) ÷ ALE_before] × 100%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <canvas id="roi-chart"></canvas>
+                        </div>
+                        
+                        <h2>Step 6: Sensitivity Analysis</h2>
+                        <p>Test how changes in key variables affect your results to ensure the robustness of your decision.</p>
+                        
+                        <div class="tab-container">
+                            <ul class="tabs">
+                                <li class="tab-item active" data-tab="sensitivity-aro">ARO Change</li>
+                                <li class="tab-item" data-tab="sensitivity-ef">Exposure Factor</li>
+                                <li class="tab-item" data-tab="sensitivity-cost">Safeguard Cost</li>
+                            </ul>
+                            
+                            <div id="sensitivity-aro" class="tab-pane active">
+                                <p>Adjust the slider to see how changes in the Annualized Rate of Occurrence (ARO) before the safeguard affect the ROSI:</p>
+                                <div class="slider-container">
+                                    <input type="range" min="0.1" max="1" value="0.5" step="0.1" class="range-slider" id="aro-sensitivity-slider">
+                                    <div class="slider-value" id="aro-sensitivity-value">0.5</div>
+                                </div>
+                                <div id="aro-sensitivity-result" style="margin-top: 1rem;">
+                                    <p><strong>ROSI at ARO = 0.5:</strong> 1,700%</p>
+                                </div>
+                            </div>
+                            
+                            <div id="sensitivity-ef" class="tab-pane">
+                                <p>Adjust the slider to see how changes in the Exposure Factor (EF) affect the ROSI:</p>
+                                <div class="slider-container">
+                                    <input type="range" min="10" max="100" value="90" step="10" class="range-slider" id="ef-sensitivity-slider">
+                                    <div class="slider-value" id="ef-sensitivity-value">90%</div>
+                                </div>
+                                <div id="ef-sensitivity-result" style="margin-top: 1rem;">
+                                    <p><strong>ROSI at EF = 90%:</strong> 1,700%</p>
+                                </div>
+                            </div>
+                            
+                            <div id="sensitivity-cost" class="tab-pane">
+                                <p>Adjust the slider to see how changes in the annual cost of the safeguard affect the ROSI:</p>
+                                <div class="slider-container">
+                                    <input type="range" min="50" max="500" value="200" step="50" class="range-slider" id="cost-sensitivity-slider">
+                                    <div class="slider-value" id="cost-sensitivity-value">$200</div>
+                                </div>
+                                <div id="cost-sensitivity-result" style="margin-top: 1rem;">
+                                    <p><strong>ROSI at Cost = $200:</strong> 1,700%</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Sensitivity Analysis Result:</strong> The security investment appears to be robust against changes in ARO, Exposure Factor, and Safeguard Cost, maintaining a positive ROSI across the tested ranges.
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-6">
+                                <button class="btn btn-outline" data-goto="risk-calculation">Previous: Risk Calculation</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-primary" data-goto="reporting">Next: Reporting</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="reporting">
+                <div class="card">
+                    <div class="card-header">
+                        Report Generation
+                    </div>
+                    <div class="card-body">
+                        <h2>Step 7: Recommendation and Reporting</h2>
+                        <p>Based on the quantitative analysis, generate a recommendation and a comprehensive report for stakeholders.</p>
+                        
+                        <div class="risk-input-section">
+                            <h3>Decision Criteria</h3>
+                            <p>A positive ROSI indicates that the security investment is financially justified.</p>
+                            
+                            <div class="alert alert-info" id="recommendation-box">
+                                <strong>Recommendation:</strong> Since the safeguard saves $3,400 per year and provides a ROSI of 1,700%, it is strongly recommended to implement the proposed security control.
+                            </div>
+                            
+                            <h3>Additional Considerations</h3>
+                            <div class="form-group">
+                                <label for="qualitative-factors">Qualitative Factors</label>
+                                <textarea id="qualitative-factors" rows="3" placeholder="Enter any qualitative factors that should be considered alongside the quantitative analysis..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="implementation-notes">Implementation Notes</label>
+                                <textarea id="implementation-notes" rows="3" placeholder="Enter any notes about the implementation process, timeline, or dependencies..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <h2>Executive Summary</h2>
+                        <div id="executive-summary" class="calculation-box">
+                            <h3>Cybersecurity Risk Investment Analysis</h3>
+                            <p><strong>Asset at Risk:</strong> <span id="summary-asset">Employee laptops containing sensitive business data</span></p>
+                            <p><strong>Threat:</strong> <span id="summary-threat">Ransomware infection leading to data loss</span></p>
+                            <p><strong>Proposed Safeguard:</strong> <span id="summary-safeguard">Installing enterprise-level antivirus software</span></p>
+                            <p><strong>Cost of Safeguard:</strong> <span id="summary-cost">$200 per year per laptop</span></p>
+                            
+                            <h4>Risk Analysis Results:</h4>
+                            <ul>
+                                <li><strong>Single Loss Expectancy (SLE):</strong> <span id="summary-sle">$9,000</span></li>
+                                <li><strong>Annual Loss Expectancy (ALE) Before:</strong> <span id="summary-ale-before">$4,500</span></li>
+                                <li><strong>Annual Loss Expectancy (ALE) After:</strong> <span id="summary-ale-after">$900</span></li>
+                                <li><strong>Value of Safeguard:</strong> <span id="summary-value">$3,400</span></li>
+                                <li><strong>Return on Security Investment (ROSI):</strong> <span id="summary-rosi">1,700%</span></li>
+                            </ul>
+                            
+                            <p><strong>Conclusion:</strong> The proposed security control is financially justified and provides a significant return on investment.</p>
+                        </div>
+                        
+                        <div style="text-align: center; margin: 2rem 0;">
+                            <button class="btn btn-primary" id="generate-report-btn">Generate Full Report</button>
+                        </div>
+                        
+                        <div class="grid">
+                            <div class="col-6">
+                                <button class="btn btn-outline" data-goto="roi-analysis">Previous: ROI Analysis</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-outline" data-goto="overview">Back to Overview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <p>&copy; 2025 Cybersecurity Risk Management</p>
+            </div>
+            <div>
+                <p>A Project Template for Postgraduate Students</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="js/chart.js"></script>
+</body>
+</html>
